@@ -1,0 +1,7 @@
+import 'package:flutter/material.dart';
+import 'package:tracker_app/utils/theme/app_colors.dart';
+
+extension ThemeExtensions on BuildContext {
+  /// Get the AppColors extension from the current theme
+  NewAppColors get colors => Theme.of(this).extension<NewAppColors>()!;
+}
