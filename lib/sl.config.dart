@@ -18,6 +18,10 @@ import 'features/auth/data/repository/auth_repository_impl.dart' as _i814;
 import 'features/auth/domain/repository/auth_repository.dart' as _i279;
 import 'features/auth/presentation/provider/auth_provider.dart' as _i588;
 import 'features/auth/presentation/provider/home_provider.dart' as _i394;
+import 'features/task/data/data_source/task_remote_data_source.dart' as _i113;
+import 'features/task/data/repository/task_repository_impl.dart' as _i926;
+import 'features/task/domain/repository/task_repository.dart' as _i1;
+import 'features/task/presentation/provider/task_provider.dart' as _i410;
 import 'utils/services/storage/storage_service.dart' as _i565;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -34,14 +38,25 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i279.AuthRepository>(
       () => _i814.AuthRepositoryImpl(gh<_i516.AuthRemoteDataSource>()),
     );
+    gh.lazySingleton<_i113.RemoteDataSource>(
+      () => _i113.TaskRemoteDataSourceImpl(),
+    );
     gh.lazySingleton<_i565.StorageService>(
       () => _i565.StorageService(gh<_i460.SharedPreferences>()),
+    );
+    gh.lazySingleton<_i1.TaskRepository>(
+      () => _i926.TaskRepositoryImpl(
+        remoteDataSource: gh<_i113.RemoteDataSource>(),
+      ),
     );
     gh.lazySingleton<_i588.AuthProvider>(
       () => _i588.AuthProvider(
         authRepository: gh<_i279.AuthRepository>(),
         storageService: gh<_i565.StorageService>(),
       ),
+    );
+    gh.lazySingleton<_i410.TaskProvider>(
+      () => _i410.TaskProvider(taskRepository: gh<_i1.TaskRepository>()),
     );
     return this;
   }

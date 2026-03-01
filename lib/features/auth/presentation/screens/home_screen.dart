@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../utils/theme/theme.extension.dart';
+import '../../../task/presentation/screens/task_list_screen.dart';
 import '../provider/home_provider.dart';
 import 'tabs/home_tab.dart';
 import 'tabs/profile_tab.dart';
@@ -17,7 +18,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final List<Widget> _tabs = const [HomeTab(), ProfileTab()];
+  final List<Widget> _tabs = const [TaskListScreen(), ProfileTab()];
 
   @override
   void initState() {

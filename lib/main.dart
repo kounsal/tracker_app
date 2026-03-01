@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'features/auth/presentation/provider/auth_provider.dart';
 import 'features/auth/presentation/provider/home_provider.dart';
 
+import 'features/task/presentation/provider/task_provider.dart';
 import 'router/app_router.dart';
 import 'sl.dart';
 import 'utils/theme/theme.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => getIt<AuthProvider>()),
         ChangeNotifierProvider(create: (_) => getIt<HomeProvider>()),
+        ChangeNotifierProvider(create: (_) => getIt<TaskProvider>()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(360, 800),

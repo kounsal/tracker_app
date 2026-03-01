@@ -4,6 +4,10 @@ import 'package:go_router/go_router.dart';
 import '../features/auth/presentation/screens/home_screen.dart';
 import '../features/auth/presentation/screens/login_screen.dart';
 import '../features/auth/presentation/screens/register_screen.dart';
+import '../features/task/presentation/screens/create_task_screen.dart';
+import '../features/task/presentation/screens/edit_task_screen.dart';
+import '../features/task/presentation/screens/task_detail_screen.dart';
+import '../features/task/presentation/screens/task_list_screen.dart';
 import '../utils/common/screens/splash_screen.dart';
 import '../utils/common/widgets/common_functions.dart';
 import 'navigationn_arguments.dart';
@@ -39,6 +43,32 @@ class AppRouter {
             initialTab: args?.initialTab,
             refreshData: args?.refreshData,
           );
+        },
+      ),
+      GoRoute(
+        path: RouteNames.taskListPath,
+        name: RouteNames.taskListPath,
+        builder: (context, state) => const TaskListScreen(),
+      ),
+      GoRoute(
+        path: RouteNames.createTaskPath,
+        name: RouteNames.createTaskPath,
+        builder: (context, state) => const CreateTaskScreen(),
+      ),
+      GoRoute(
+        path: '${RouteNames.taskDetailPath}/:id',
+        name: RouteNames.taskDetailPath,
+        builder: (context, state) {
+          final id = state.pathParameters['id']!;
+          return TaskDetailScreen(taskId: id);
+        },
+      ),
+      GoRoute(
+        path: '${RouteNames.editTaskPath}/:id',
+        name: RouteNames.editTaskPath,
+        builder: (context, state) {
+          final id = state.pathParameters['id']!;
+          return EditTaskScreen(taskId: id);
         },
       ),
     ],
