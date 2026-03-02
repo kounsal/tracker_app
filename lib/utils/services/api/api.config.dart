@@ -1,5 +1,5 @@
 class ApiConfig {
-  static const String baseUrl = "http://localhost:4000";
+  static const String baseUrl = "http://3.111.55.51:4000";
   static const int timeoutDuration = 15000; // in milliseconds
 
   //endpoints
